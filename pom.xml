@@ -87,13 +87,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.drdanick</groupId>
-            <artifactId>RemoteToolKit</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${pom.basedir}/libs/RTK.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.9-R0.1-SNAPSHOT</version>
@@ -104,6 +97,11 @@
             <version>1.9-R0.1-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/libs/craftbukkit.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>2.12</version>
         </dependency>
     </dependencies>
 
