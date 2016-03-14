@@ -1,12 +1,13 @@
 package com.drdanick.McRKit.plugin;
 
-import java.lang.reflect.Method;
 import jline.Terminal;
 import jline.TerminalSupport;
 import jline.UnsupportedTerminal;
 import jline.console.ConsoleReader;
 import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.lang.reflect.Method;
 
 public class LegacySupport {
 

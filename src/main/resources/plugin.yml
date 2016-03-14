@@ -1,6 +1,6 @@
 name: RemoteToolkitPlugin
 main: com.drdanick.McRKit.plugin.RTKPlugin
-version: R10_A15.4
+version: ${pom.version}-B#${env.BUILD_NUMBER}
 website: http://drdanick.com
 authors:
   - drdanick

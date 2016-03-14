@@ -1,14 +1,5 @@
 package com.drdanick.McRKit.plugin;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Scanner;
-import java.util.logging.Logger;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -18,11 +9,47 @@ import org.bukkit.craftbukkit.libs.jline.UnsupportedTerminal;
 import org.bukkit.craftbukkit.libs.jline.console.ConsoleReader;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Scanner;
+
 public class RTKPlugin extends JavaPlugin {
 
     private Properties properties;
     private Map<String, String> messageMap;
     private RTKEventHandler eventHandler;
+
+    public static Map<String, String> loadMap(InputStream inputstream) {
+        HashMap<String, String> hashmap = new HashMap<>();
+
+        try (Scanner scanner = new Scanner(inputstream)) {
+
+            while (scanner.hasNextLine()) {
+                String[] astring = scanner.nextLine().trim().split(":");
+                String s = astring[0];
+                String s1 = "";
+
+                for (int i = 1; i < astring.length; ++i) {
+                    s1 = s1 + ":" + astring[i];
+                }
+
+                if (s1.length() > 0) {
+                    hashmap.put(s, s1.substring(1));
+                } else {
+                    hashmap.put(s, "");
+                }
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        return hashmap;
+    }
 
     public void onEnable() {
 
@@ -88,32 +115,5 @@ public class RTKPlugin extends JavaPlugin {
 
         properties.load(inputstream);
         return properties;
-    }
-
-    public static Map<String, String> loadMap(InputStream inputstream) {
-        HashMap<String, String> hashmap = new HashMap<>();
-
-        try( Scanner scanner = new Scanner(inputstream) ) {
-
-            while (scanner.hasNextLine()) {
-                String[] astring = scanner.nextLine().trim().split(":");
-                String s = astring[0];
-                String s1 = "";
-
-                for (int i = 1; i < astring.length; ++i) {
-                    s1 = s1 + ":" + astring[i];
-                }
-
-                if (s1.length() > 0) {
-                    hashmap.put(s, s1.substring(1));
-                } else {
-                    hashmap.put(s, "");
-                }
-            }
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        return hashmap;
     }
 }

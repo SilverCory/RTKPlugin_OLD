@@ -1,5 +1,11 @@
 package com.drdanick.McRKit.plugin;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
+
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -10,17 +16,12 @@ import java.net.SocketTimeoutException;
 import java.util.Collection;
 import java.util.Properties;
 import java.util.logging.Level;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 
 public class RTKEventHandler {
 
+    private final String[] denyStrings = new String[]{"No.", "Make me.", "Nice try!", "It works if you know the password.", "You\'re not being very persuasive.", "You didn\'t say the magic word!", "No! You\'re not my mother.", "Once again, with feeling!", "The password gods have frowned upon you.", "My mother told me not to talk to strangers."};
     private RTKPlugin plugin;
     private int port = 25561;
-    private final String[] denyStrings = new String[] { "No.", "Make me.", "Nice try!", "It works if you know the password.", "You\'re not being very persuasive.", "You didn\'t say the magic word!", "No! You\'re not my mother.", "Once again, with feeling!", "The password gods have frowned upon you.", "My mother told me not to talk to strangers."};
     private PrintStream out;
     private PrintStream err;
 
